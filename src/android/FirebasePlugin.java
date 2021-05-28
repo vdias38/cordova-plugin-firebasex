@@ -419,10 +419,12 @@ public class FirebasePlugin extends CordovaPlugin {
                     }
                     AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
                     String id = FirebasePlugin.instance.saveAuthCredential(credential);
+                    String idToken = acct.getIdToken();
 
                     JSONObject returnResults = new JSONObject();
                     returnResults.put("instantVerification", true);
                     returnResults.put("id", id);
+                    returnResults.put("idToken", idToken);
                     FirebasePlugin.activityResultCallbackContext.success(returnResults);
                     break;
             }
